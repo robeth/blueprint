@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app='Atlas'>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,18 +14,36 @@
       <div class="row">
         <div id="menu" class="col-md-3 col-sm-3">
           <ul class="nav nav-pills nav-stacked">
-            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Home</a></li>
+            <li class="active"><a href="#">Server</a></li>
+            <li><a href="#">Applications</a></li>
             <li><a href="#">Category</a></li>
-            <li><a href="#">Notes</a></li>
-            <li><a href="#">Settings</a></li>
+            <li><a href="#">Service</a></li>
           </ul>
         </div>
-        <div id="page" class="col-md-9 col-sm-9">
-          Place your content here!
+        <div id="page-container" class="col-md-9 col-sm-9">
+          <div id="page-server" ng-controller="ServerCtrl">
+            <div class="well">
+              <button type="button"
+                class="btn"
+                ng-repeat="location in locations"
+                ng-click="setCurrentLocation(location)"
+                ng-class="currentLocation == location ? 'btn-primary' : 'btn-default'">{{location}}</button>
+            </div>
+            <div
+              class="panel panel-default"
+              ng-repeat="server in servers | filter:serverFilterByLocation">
+              <div class="panel-heading">{{server.name}} <a href="#">
+                <span class="glyphicon glyphicon-pencil pull-right"></a></span>
+              </div>
+              <div class="panel-body">{{server.description}}</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
+    <script src="app/atlas.js"></script>
   </body>
 </html>
