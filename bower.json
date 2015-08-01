@@ -1,10 +1,10 @@
 {
-  "name": "learn-angular",
+  "name": "blueprint",
   "version": "0.0.1",
   "authors": [
     "robeth <robethrahmatullah@gmail.com>"
   ],
-  "description": "learn angular js",
+  "description": "Visualize server and application architecture",
   "main": "index.html",
   "moduleType": [
     "amd"
