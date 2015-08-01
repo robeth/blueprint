@@ -1,0 +1,25 @@
+{
+  "name": "learn-angular",
+  "version": "0.0.1",
+  "authors": [
+    "robeth <robethrahmatullah@gmail.com>"
+  ],
+  "description": "learn angular js",
+  "main": "index.html",
+  "moduleType": [
+    "amd"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "angular": "~1.4.3",
+    "bootstrap": "~3.3.5"
+  }
+}
