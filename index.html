@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app='Atlas'>
+<html ng-app='Blueprint'>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,6 +12,7 @@
   <body>
     <div class="container">
       <div class="row">
+        <!--  Menu -->
         <div id="menu" class="col-md-3 col-sm-3">
           <ul class="nav nav-pills nav-stacked">
             <li><a href="#">Home</a></li>
@@ -22,28 +23,82 @@
           </ul>
         </div>
         <div id="page-container" class="col-md-9 col-sm-9">
+          <!-- Server -->
           <div id="page-server" ng-controller="ServerCtrl">
+            <!-- Toolbox -->
             <div class="well">
               <button type="button"
                 class="btn"
                 ng-repeat="location in locations"
                 ng-click="setCurrentLocation(location)"
                 ng-class="currentLocation == location ? 'btn-primary' : 'btn-default'">{{location}}</button>
+              <button class="btn btn-warning pull-right" ng-click="initAddServerForm()">+</button>
             </div>
+            <!-- Server List -->
             <div
               class="panel panel-default"
               ng-repeat="server in servers | filter:serverFilterByLocation">
-              <div class="panel-heading">{{server.name}} <a href="#">
+              <div class="panel-heading">{{server.name}} <a href="#" ng-click="initEditServerForm(server)">
                 <span class="glyphicon glyphicon-pencil pull-right"></a></span>
               </div>
               <div class="panel-body">{{server.description}}</div>
             </div>
+            <!-- Add Server Form -->
+            <form class="form-horizontal" ng-submit="hideForm();addServer(newServer);" ng-show="isCreating">
+              <h2>Add Server</h2>
+              <div class="form-group">
+                <label for="server-name-input" class="col-sm-2 control-label">Name</label>
+                <div class="col-sm-6">
+                  <input id="server-name-input" type="text" class="form-control" ng-model="newServer.name">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="server-description-input" class="col-sm-2 control-label">Description</label>
+                <div class="col-sm-6">
+                  <input id="server-description-input" type="text" class="form-control" ng-model="newServer.description">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="server-location-input" class="col-sm-2 control-label">Location</label>
+                <div class="col-sm-6">
+                  <select id="server-location-input"class="form-control" ng-model="newServer.location">
+                    <option value="{{location}}" ng-repeat="location in locations">{{location}}</option>
+                  </select>
+                </div>
+              </div>
+              <button type="submit">Confirm</button>
+            </form>
+            <!-- Edit Server Form -->
+            <form class="form-horizontal" ng-submit="hideForm();editServer(modifiedServer);" ng-show="isEditing">
+              <h2>Edit {{modifiedServer.name}}</h2>
+              <div class="form-group">
+                <label for="server-name-input" class="col-sm-2 control-label">Name</label>
+                <div class="col-sm-6">
+                  <input id="server-name-input" type="text" class="form-control" ng-model="modifiedServer.name">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="server-description-input" class="col-sm-2 control-label">Description</label>
+                <div class="col-sm-6">
+                  <input id="server-description-input" type="text" class="form-control" ng-model="modifiedServer.description">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="server-location-input" class="col-sm-2 control-label">Location</label>
+                <div class="col-sm-6">
+                  <select id="server-location-input"class="form-control" ng-model="modifiedServer.location">
+                    <option value="{{location}}" ng-repeat="location in locations">{{location}}</option>
+                  </select>
+                </div>
+              </div>
+              <button type="submit">Confirm</button>
+            </form>
           </div>
         </div>
       </div>
     </div>
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
-    <script src="app/atlas.js"></script>
+    <script src="app/blueprint.js"></script>
   </body>
 </html>
