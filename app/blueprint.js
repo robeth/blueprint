@@ -2,13 +2,13 @@ angular.module("Blueprint", [
 
 ]).controller("ServerCtrl", function($scope){
   $scope.servers = [
-    { "id" : 1, "name" : "gw1", "description": "Server 1 di MidPlaza", "location" : "MidPlaza" },
-    { "id" : 2, "name" : "gw2", "description": "Server 2 di MidPlaza", "location" : "MidPlaza" },
-    { "id" : 3, "name" : "gw3", "description": "Server 3 di Technovillage", "location" : "Technovillage" },
-    { "id" : 4, "name" : "gw4", "description": "Server 4 di Technovillage", "location" : "Technovillage" }
+    { "id" : 1, "name" : "apple", "description": "Monitoring server", "location" : "Jakarta" },
+    { "id" : 2, "name" : "banana", "description": "Utility server", "location" : "Jakarta" },
+    { "id" : 3, "name" : "cherry", "description": "Apps 1", "location" : "Bandung" },
+    { "id" : 4, "name" : "date", "description": "Apps 2", "location" : "Bandung" }
   ];
 
-  $scope.locations = [ "Technovillage", "MidPlaza" ];
+  $scope.locations = [ "Jakarta", "Bandung" ];
 
   $scope.currentLocation = null;
 
